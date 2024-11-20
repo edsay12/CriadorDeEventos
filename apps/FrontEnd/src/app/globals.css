@@ -13,3 +13,10 @@ body {
   background: var(--background);
   
 }
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 max-w-7xl mt-2 
+  }
+
+}

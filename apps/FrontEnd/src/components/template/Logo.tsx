@@ -12,7 +12,9 @@ function Logo() {
     <Link href={"/"} className={`${font.className} flex items-center gap-2`}>
       <Image src={"/logo.svg"} alt="logo" width={50} height={50} />
       <h1 className="leading-5 flex flex-col text-lg">
-        <div>Convit<span className="text-blue-500 px-0">3</span> </div>
+        <div>
+          Convit<span className="text-blue-500 px-0">3</span>
+        </div>
         <div>Digital</div>
       </h1>
     </Link>

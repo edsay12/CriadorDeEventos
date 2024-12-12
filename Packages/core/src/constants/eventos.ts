@@ -1,9 +1,9 @@
 import { Evento } from '../evento'
 import { Id } from '../shared'
 
-const eventos: Evento[] = [
+export const eventos: Evento[] = [
     {
-        id: Id.novo(),
+        id: "xswelslsllslsslls",
         alias: 'evento-fullstack',
         senha: 'senha123',
         nome: 'Evento de Desenvolvimento Fullstack',
@@ -17,7 +17,7 @@ const eventos: Evento[] = [
         publicoEsperado: 200,
         convidados: [
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Alice Silva',
                 email: 'alice@example.com',
                 confirmado: true,
@@ -25,7 +25,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 1,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Carlos Pereira',
                 email: 'carlos@example.com',
                 confirmado: false,
@@ -33,7 +33,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 0,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Beatriz Lima',
                 email: 'beatriz@example.com',
                 confirmado: true,
@@ -43,7 +43,7 @@ const eventos: Evento[] = [
         ],
     },
     {
-        id: Id.novo(),
+        id: "1",
         alias: 'evento-js-avancado',
         senha: 'js2024',
         nome: 'Workshop Avançado de JavaScript',
@@ -56,7 +56,7 @@ const eventos: Evento[] = [
         publicoEsperado: 100,
         convidados: [
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Eduardo Santos',
                 email: 'eduardo@example.com',
                 confirmado: true,
@@ -64,7 +64,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 0,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Fernanda Costa',
                 email: 'fernanda@example.com',
                 confirmado: true,
@@ -74,7 +74,7 @@ const eventos: Evento[] = [
         ],
     },
     {
-        id: Id.novo(),
+        id: "1",
         alias: 'evento-dev-frontend',
         senha: 'front123',
         nome: 'Bootcamp de Desenvolvimento Frontend',
@@ -87,7 +87,7 @@ const eventos: Evento[] = [
         publicoEsperado: 150,
         convidados: [
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Gabriela Rocha',
                 email: 'gabriela@example.com',
                 confirmado: true,
@@ -95,7 +95,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 1,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Hugo Nogueira',
                 email: 'hugo@example.com',
                 confirmado: false,
@@ -103,7 +103,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 0,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Isabela Martins',
                 email: 'isabela@example.com',
                 confirmado: true,
@@ -113,7 +113,7 @@ const eventos: Evento[] = [
         ],
     },
     {
-        id: Id.novo(),
+        id: "1",
         alias: 'casamento-alberto-marina',
         senha: 'casamento2024',
         nome: 'Casamento do Alberto e Marina',
@@ -127,7 +127,7 @@ const eventos: Evento[] = [
         publicoEsperado: 150,
         convidados: [
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Bruno Cardoso',
                 email: 'bruno@example.com',
                 confirmado: true,
@@ -135,7 +135,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 1,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Carla Mendes',
                 email: 'carla@example.com',
                 confirmado: true,
@@ -145,7 +145,7 @@ const eventos: Evento[] = [
         ],
     },
     {
-        id: Id.novo(),
+        id: "1",
         alias: 'aniversario-joao',
         senha: 'joao2024',
         nome: 'Aniversário do João - 30 Anos',
@@ -159,7 +159,7 @@ const eventos: Evento[] = [
         publicoEsperado: 80,
         convidados: [
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Maria Souza',
                 email: 'maria@example.com',
                 confirmado: true,
@@ -167,7 +167,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 2,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'José Almeida',
                 email: 'jose@example.com',
                 confirmado: false,
@@ -177,7 +177,7 @@ const eventos: Evento[] = [
         ],
     },
     {
-        id: Id.novo(),
+        id: "1",
         alias: 'inauguracao-loja-estrela',
         senha: 'estrela2024',
         nome: 'Inauguração da Loja Estrela',
@@ -191,7 +191,7 @@ const eventos: Evento[] = [
         publicoEsperado: 300,
         convidados: [
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Cláudia Lima',
                 email: 'claudia@example.com',
                 confirmado: true,
@@ -199,7 +199,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 3,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Ricardo Barbosa',
                 email: 'ricardo@example.com',
                 confirmado: true,
@@ -209,7 +209,7 @@ const eventos: Evento[] = [
         ],
     },
     {
-        id: Id.novo(),
+        id: "1",
         alias: 'reuniao-familia-oliveira',
         senha: 'familia2024',
         nome: 'Reunião da Família Oliveira',
@@ -222,7 +222,7 @@ const eventos: Evento[] = [
         publicoEsperado: 50,
         convidados: [
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Thiago Oliveira',
                 email: 'thiago@example.com',
                 confirmado: true,
@@ -230,7 +230,7 @@ const eventos: Evento[] = [
                 qtdeAcompanhantes: 4,
             },
             {
-                id: Id.novo(),
+                id: "1",
                 nome: 'Letícia Oliveira',
                 email: 'leticia@example.com',
                 confirmado: true,

@@ -1,0 +1,34 @@
+GET http://localhost:4000/ping
+
+
+
+### buscar todos os eventos
+GET http://localhost:4000/eventos/all
+### buscar por alias ou id
+GET http://localhost:4000/eventos/35b261a8-c549-4459-9097-f426d2ce38d0
+
+
+###
+POST http://localhost:4000/eventos/acessar
+Content-Type: application/json
+
+{
+    "id": "2b1ae7e7-d521-4f84-ae12-4215092c5912",
+    "senha": "js2024"
+}
+
+###
+GET  http://localhost:4000/eventos/validar/asdasdasd/2b1ae7e7-d521-4f84-ae12-4215092c5912
+
+
+### 
+POST http://localhost:4000/eventos/aswww/convidado
+Content-Type: application/json
+
+{
+    "nome": "Nic",
+    "email": "nic@gmail.com",
+    "confirmado": true,
+    "possuiAcompanhantes": true,
+    "qtdeAcompanhantes": 2
+}

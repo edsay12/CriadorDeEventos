@@ -1,5 +1,3 @@
-import { randomUUID } from "crypto";
-
 export default class Senha {
     static nova(tamanho:number = 15):string{
         const minusculas = "abcdefghijklmnopqrstuvwxyz"

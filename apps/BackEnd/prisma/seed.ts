@@ -21,7 +21,7 @@ async function seed() {
                 nome: convidado.nome,
                 email: convidado.email,
                 confirmado: convidado.confirmado,
-                possuiAcompanhante: convidado.possuiAcompanhantes,
+                possuiAcompanhante: convidado.possuiAcompanhante,
                 qtdeAcompanhantes: convidado.qtdeAcompanhantes,
             }))
         }

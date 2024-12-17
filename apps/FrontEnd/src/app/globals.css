@@ -26,3 +26,8 @@ body {
     @apply bg-blue-500 text-white hover:bg-blue-700 focus:ring-blue-400 focus:ring-offset-blue-200
   }
 }
+
+/* serve pra alguns compos do input ficarem brancos por ele normalmente são pretos */
+input {
+  color-scheme: dark; 
+}

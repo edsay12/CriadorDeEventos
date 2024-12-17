@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const urlBase = process.env.NEST_PUBLIC_API_URL;
+const urlBase = "http://localhost:4000"
 
 export default function useAPI() {
   const httpGet = useCallback(async function (caminho: string) {

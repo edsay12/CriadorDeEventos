@@ -7,22 +7,29 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { eventos } from 'core';
+
 import { Evento } from 'core';
 import { Data } from 'core';
 import { Convidado } from 'core/src/evento';
 import { EventoPrisma } from './evento.prisma';
 
+import { Senha } from 'core';
+
 @Controller('eventos')
 export class EventosController {
   constructor(private readonly eventoPrisma: EventoPrisma) {}
+
+  @Get('validar/:alias')
+  async validarAlias(@Param('alias') alias: string) {
+    const evento = await this.eventoPrisma.buscarPorAlias(alias);
+    return evento ? false : true;
+  }
 
   @Get('/all')
   async buscarEventos() {
     return await this.eventoPrisma.buscarTodos();
   }
 
-  
   @Post('/:alias/convidado')
   async salvarConvidado(
     @Param('alias') alias: string,
@@ -34,7 +41,6 @@ export class EventosController {
     }
     return await this.eventoPrisma.salvarConvidado(evento, convidado);
   }
-
 
   // procura eventos por id ou pro alias
   @Get('/:idoralias')
@@ -52,22 +58,23 @@ export class EventosController {
     return evento;
   }
 
-  @Get('/validar/:alias/:idevento')
-  async validarAlias(
-    @Param('alias') alias: string,
-    @Param('idevento') idevento: string,
-  ) {
-    const evento = await this.eventoPrisma.buscarPorAlias(alias);
-   
-    return { valido:!!(evento && evento.id === idevento)};
-  }
-
   @Post('')
   async salvarEvento(@Body() evento: Evento) {
     const existe = await this.eventoPrisma.buscarPorAlias(evento.alias);
     if (existe && existe.id !== evento.id) {
       throw new HttpException('Evento já existente', HttpStatus.CONFLICT);
     }
+    evento = {
+      ...evento,
+      data: evento.data,
+      local: evento.local,
+      senha: Senha.nova(),
+      descricao: evento.descricao,
+      imagem: evento.imagem,
+      convidados: [],
+      imagembackground: evento.imagemBackground,
+      publicoEsperado: evento.publicoEsperado,
+    };
     return await this.eventoPrisma.salvarEvento(evento);
   }
 

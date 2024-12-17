@@ -2,10 +2,10 @@
 
 import { Convidado } from "@prisma/client";
 import { Evento } from "core/src";
-import { createContext } from "vm";
+import { createContext } from "react";
 import useAPI from "../hooks/useApi";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export interface ContextoEventoProps {
   children: React.ReactNode;
@@ -19,9 +19,10 @@ export interface ContextoEventoProps {
   adicionarConvidado: () => void;
 }
 
-const ContextoEvento = createContext({} as ContextoEventoProps);
 
-function ContextoEventoProvider({ children }: ContextoEventoProps) {
+const ContextoEvento = createContext<ContextoEventoProps>({} as ContextoEventoProps);
+
+function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
   const [aliasValido, setAliasValido] = useState(false);
   const [evento, setEvento] = useState<Partial<Evento>>({});
   const [convidado, setConvidado] = useState<Partial<Convidado>>({});
@@ -32,6 +33,7 @@ function ContextoEventoProvider({ children }: ContextoEventoProps) {
     try {
       const eventoCriado = await httpPost("/eventos", evento);
       router.push(`/evento/sucesso`);
+      
       setEvento(eventoCriado);
     } catch (erro) {
       // TODO: tratar erro
@@ -63,8 +65,9 @@ function ContextoEventoProvider({ children }: ContextoEventoProps) {
   }
   const validarAlias = async () => {
     try {
-      const{valido} = await httpGet(`/eventos/validar/${evento.alias}/${evento.id}`);
-      setAliasValido(valido);
+      const data= await httpGet(`/eventos/validar/${evento.alias}`);
+      console.log(data);
+      setAliasValido(data);
     } catch (erro) {
       // TODO: tratar erro
       console.log(erro);
@@ -86,6 +89,7 @@ function ContextoEventoProvider({ children }: ContextoEventoProps) {
         salvarEvento,
         carregarEvento,
         adicionarConvidado,
+        children,
 
       }}
     >

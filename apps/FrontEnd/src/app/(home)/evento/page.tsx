@@ -1,12 +1,27 @@
+"use client";
+
+import FormEvento from "@/components/evento/FormEvento";
+import Janela from "@/components/shared/Janela";
+import useEvento from "@/data/hooks/useEvento";
+
 import QRCode from "react-qr-code";
 
 function PaginaEvento() {
-    return (  <div>
-        <span>Evento</span>
-        <div>
-            <QRCode value="https://www.google.com" className="w-44 h-44" />
-        </div>
-    </div>);
+  const { evento } = useEvento();
+
+  return (
+    <div>
+      <Janela label="Qual evento vamos criar?"
+     titulo={evento?.nome ? evento.nome : "Novo Evento"}
+     imagem={evento?.imagem}
+     background={evento?.imagemBackground}
+      >
+       <FormEvento />
+      </Janela>
+      
+      
+    </div>
+  );
 }
 
 export default PaginaEvento;

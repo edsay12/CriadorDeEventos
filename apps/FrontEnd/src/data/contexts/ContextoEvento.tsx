@@ -1,7 +1,7 @@
 "use client";
 
 import { Convidado } from "@prisma/client";
-import { Evento } from "core/src";
+import { Data, Evento } from "core/src";
 import { createContext } from "react";
 import useAPI from "../hooks/useApi";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 export interface ContextoEventoProps {
   children: React.ReactNode;
-  evento?: Partial<Evento>;
+  evento: Partial<Evento>;
   convidado: Partial<Convidado>;
   aliasValido: boolean;
   alterarEvento: (evento: Partial<Evento>) => void;
@@ -19,8 +19,9 @@ export interface ContextoEventoProps {
   adicionarConvidado: () => void;
 }
 
-
-const ContextoEvento = createContext<ContextoEventoProps>({} as ContextoEventoProps);
+const ContextoEvento = createContext<ContextoEventoProps>(
+  {} as ContextoEventoProps
+);
 
 function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
   const [aliasValido, setAliasValido] = useState(false);
@@ -31,9 +32,16 @@ function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
 
   async function salvarEvento() {
     try {
-      const eventoCriado = await httpPost("/eventos", evento);
+      const eventoCriado = await httpPost(
+        "/eventos",
+
+        {
+          ...evento,
+          data: evento.data,
+        }
+      );
       router.push(`/evento/sucesso`);
-      
+
       setEvento(eventoCriado);
     } catch (erro) {
       // TODO: tratar erro
@@ -42,12 +50,10 @@ function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function carregarEvento(idOrAlias: number) {
-    try{
-       const evento = await httpGet(`/eventos/${idOrAlias}`);
-       setEvento(evento);
-     
-
-    }catch(erro){
+    try {
+      const evento = await httpGet(`/eventos/${idOrAlias}`);
+      setEvento(evento);
+    } catch (erro) {
       // TODO: tratar erro
       console.log(erro);
     }
@@ -65,7 +71,7 @@ function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
   }
   const validarAlias = async () => {
     try {
-      const data= await httpGet(`/eventos/validar/${evento.alias}`);
+      const data = await httpGet(`/eventos/validar/${evento.alias}`);
       console.log(data);
       setAliasValido(data);
     } catch (erro) {
@@ -75,8 +81,8 @@ function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    if(evento.alias) validarAlias();
-  }, [evento.alias,validarAlias]);
+    if (evento.alias) validarAlias();
+  }, [evento.alias, validarAlias]);
 
   return (
     <ContextoEvento.Provider
@@ -90,7 +96,6 @@ function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
         carregarEvento,
         adicionarConvidado,
         children,
-
       }}
     >
       {children}

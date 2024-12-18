@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <ContextoEventoProvider >
-      <Pagina>{children}</Pagina>;
-    </ContextoEventoProvider>
+   
+      <Pagina>{children}</Pagina>
+    
   );
 }

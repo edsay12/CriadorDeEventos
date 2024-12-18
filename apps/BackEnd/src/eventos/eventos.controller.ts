@@ -65,16 +65,17 @@ export class EventosController {
       throw new HttpException('Evento já existente', HttpStatus.CONFLICT);
     }
     evento = {
-      ...evento,
+      alias: evento.alias,
+      nome: evento.nome,
       data: evento.data,
       local: evento.local,
       senha: Senha.nova(),
       descricao: evento.descricao,
       imagem: evento.imagem,
-      convidados: [],
-      imagembackground: evento.imagemBackground,
+      imagembackground:evento.imagemBackground,
       publicoEsperado: evento.publicoEsperado,
     };
+    console.log(evento)
     return await this.eventoPrisma.salvarEvento(evento);
   }
 

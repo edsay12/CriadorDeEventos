@@ -11,7 +11,7 @@ export default function Home() {
           Crie e gerencie o convite de seu evento de forma simples e
           descomplicada.
         </p>
-        <Link href={"/evento/novo"} className="botão azul uppercase"> Crie seu evento </Link>
+        <Link href={"/evento"} className="botão azul uppercase"> Crie seu evento </Link>
       </div>
     </div>
   );

@@ -19,11 +19,7 @@ export default function FormEvento() {
 
   return (
     <div>
-      <Passos
-        labels={labels}
-        labelAcao="Salvar"
-        acao={salvarEvento}
-      >
+      <Passos labels={labels} labelAcao="Salvar" acao={salvarEvento}>
         <div className="flex flex-col gap-5">
           <Input
             label="Alias"
@@ -49,7 +45,7 @@ export default function FormEvento() {
             label="Data"
             description="Data e hora que o evento começa"
             type="datetime-local"
-            value={Data.formatar(evento?.data ?? new Date())}
+            value={Data.formatar(evento.data ?? new Date())}
             onChange={(e) =>
               alterarEvento({
                 ...evento,
@@ -117,11 +113,9 @@ export default function FormEvento() {
                 ...evento,
                 publicoEsperado: Number(e.target.value),
               })
-              
             }
             min={1}
           />
-          
         </div>
       </Passos>
     </div>

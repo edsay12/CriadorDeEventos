@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={fontInter.className}>{children}</body>
+      <ContextoEventoProvider>
+        <body className={fontInter.className}>{children}</body>
+      </ContextoEventoProvider>
     </html>
   );
 }

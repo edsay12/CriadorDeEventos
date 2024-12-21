@@ -14,7 +14,7 @@ function Sucesso() {
   const { evento } = useEvento();
   const [urlAtual, setUrlAtual] = useState("");
   useEffect(() => {
-    setUrlAtual(window.location.href);
+    setUrlAtual(window.location.origin);
   }, []);
   console.log(evento.data);
   return evento ? (

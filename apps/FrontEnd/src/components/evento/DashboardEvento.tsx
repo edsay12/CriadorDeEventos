@@ -10,18 +10,20 @@ export interface DashboardEventoProps {
   presentes: Convidado[];
   ausentes: Convidado[];
   totalGeral: number;
+  atualizarLista: () => void;
 }
 
 function DashboardEvento({
   evento,
   presentes,
   ausentes,
+  atualizarLista,
   totalGeral,
 }: DashboardEventoProps) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex gap-2">
-        <InformacoesEvento evento={evento} className="flex-1" />
+        <InformacoesEvento esconderNome={false} evento={evento} className="flex-1" />
         <AcessarViaQrCode evento={evento} />
       </div>
       <div className="grid grid-cols-3 gap-6 mt-4">
@@ -41,7 +43,7 @@ function DashboardEvento({
           imagem="/icones/acompanhantes.svg"
         />
       </div>
-      <button className="botão azul self-end mt-12">
+      <button className="botão azul self-end mt-12" onClick={atualizarLista}>
         <span>Atualizar lista de Convidados</span>
       </button>
       <div>

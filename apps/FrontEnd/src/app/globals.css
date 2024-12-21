@@ -25,6 +25,12 @@ body {
   .botão.azul {
     @apply bg-blue-500 text-white hover:bg-blue-700 focus:ring-blue-400 focus:ring-offset-blue-200
   }
+  .botão.verde {
+    @apply bg-green-500 text-white hover:bg-green-700 focus:ring-green-400 focus:ring-offset-green-200
+  }
+  .botão.vermelho {
+    @apply bg-red-500 text-white hover:bg-red-700 focus:ring-red-400 focus:ring-offset-red-200
+  }
 }
 
 /* serve pra alguns compos do input ficarem brancos por ele normalmente são pretos */

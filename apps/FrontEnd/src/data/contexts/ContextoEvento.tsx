@@ -14,7 +14,7 @@ export interface ContextoEventoProps {
   aliasValido: boolean;
   alterarEvento: (evento: Partial<Evento>) => void;
   alterarConvidado: (convidado: Partial<Convidado>) => void;
-  carregarEvento: (idOrAlias: number) => Promise<void>;
+  carregarEvento: (idOrAlias: number | string) => Promise<void>;
   salvarEvento: () => void;
   adicionarConvidado: () => void;
 }
@@ -49,9 +49,9 @@ function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function carregarEvento(idOrAlias: number) {
+  async function carregarEvento(alias: number | string) {
     try {
-      const evento = await httpGet(`/eventos/${idOrAlias}`);
+      const evento = await httpGet(`/eventos/${alias}`);
       setEvento(evento);
     } catch (erro) {
       // TODO: tratar erro
@@ -61,8 +61,9 @@ function ContextoEventoProvider({ children }: { children: React.ReactNode }) {
 
   async function adicionarConvidado() {
     try {
-      await httpPost(`/eventos/${evento.id}/convidados`, convidado);
-      router.push(`/convite/obrigado`);
+      await  httpPost(`/eventos/${evento.id}/convidado`, convidado);
+      console.log(convidado)
+      router.push(`/convidado/obrigado`);
       setConvidado(convidado);
     } catch (erro) {
       // TODO: tratar erro

@@ -30,15 +30,20 @@ export class EventosController {
     return await this.eventoPrisma.buscarTodos();
   }
 
-  @Post('/:alias/convidado')
+  @Post('/:idoralias/convidado')
   async salvarConvidado(
-    @Param('alias') alias: string,
+    @Param('idoralias') idoralias: string,
     @Body() convidado: Convidado,
   ) {
-    const evento = await this.eventoPrisma.buscarPorAlias(alias);
+    let evento = await this.eventoPrisma.buscarPorAlias(idoralias);
     if (!evento) {
-      throw new HttpException('Evento não encontrado', HttpStatus.NOT_FOUND);
+      evento = await this.eventoPrisma.buscarPorId(idoralias);
+
+      if (!evento) {
+        throw new HttpException('Evento não encontrado', HttpStatus.NOT_FOUND);
+      }
     }
+
     return await this.eventoPrisma.salvarConvidado(evento, convidado);
   }
 
@@ -72,16 +77,16 @@ export class EventosController {
       senha: Senha.nova(),
       descricao: evento.descricao,
       imagem: evento.imagem,
-      imagembackground:evento.imagemBackground,
+      imagembackground: evento.imagemBackground,
       publicoEsperado: evento.publicoEsperado,
     };
-    console.log(evento)
+    console.log(evento);
     return await this.eventoPrisma.salvarEvento(evento);
   }
 
   @Post('/acessar')
   async acessarEvento(@Body() dados: { id: string; senha: string }) {
-    const evento = await this.eventoPrisma.buscarPorId(dados.id);
+    const evento = await this.eventoPrisma.buscarPorId(dados.id, true);
     if (!evento || dados.senha !== evento.senha) {
       throw new HttpException('Senha incorreta', HttpStatus.UNAUTHORIZED);
     }

@@ -1,5 +1,6 @@
 import { FaLink, FaRegCopy } from "react-icons/fa6";
 import { IconType } from 'react-icons';
+import useMessage from "@/data/hooks/userMessagens";
 export interface CopiarProps {
   label: string;
   texto: string;
@@ -8,8 +9,10 @@ export interface CopiarProps {
 }
 
 function Copiar({ label, texto, icone:Icone = FaLink , observacoes }: CopiarProps) {
+  const { adicionarMensagemSuccess,adicionarMensagemError } = useMessage();
   function copiar() {
     navigator.clipboard.writeText(texto);
+    adicionarMensagemSuccess("Copiado para a área de transferência");
   }
 
   return (

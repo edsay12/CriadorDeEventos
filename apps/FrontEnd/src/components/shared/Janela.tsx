@@ -15,12 +15,22 @@ export default function Janela({
   titulo,
   background,
 }: JanelaProps) {
+
+  function isValidURL(url:string){ 
+    try {
+      new URL(url)
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
   return (
     <div className="relative rounded-xl overflow-hidden border border-zinc-800">
       <Image
         src={
-          background
-            ? background
+          isValidURL(background!)
+            ? background!
             : "https://th.bing.com/th/id/OIP.uoPbBSz8YFLw52nzSzUwcgHaE7?w=4256&h=2832&rs=1&pid=ImgDetMain"
         }
         alt={"imagem de backgroud"}
@@ -33,8 +43,8 @@ export default function Janela({
           <div className="w-28 h-28 rounded-full relative">
             <Image
               src={
-                imagem
-                  ? imagem
+                isValidURL(imagem!)
+                  ? imagem!
                   : "https://th.bing.com/th/id/OIP.uoPbBSz8YFLw52nzSzUwcgHaE7?w=4256&h=2832&rs=1&pid=ImgDetMain"
               }
               alt={"imagem do evento"}

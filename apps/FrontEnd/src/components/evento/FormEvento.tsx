@@ -19,7 +19,7 @@ export default function FormEvento() {
 
   return (
     <div>
-      <Passos labels={labels} labelAcao="Salvar" acao={salvarEvento}>
+      <Passos labels={labels} labelAcao="Salvar" acao={salvarEvento} permiteProximoPasso={permiteProximoPasso}>
         <div className="flex flex-col gap-5">
           <Input
             label="Alias"
